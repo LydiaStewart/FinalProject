@@ -5,12 +5,15 @@ import { useNavigate } from "react-router-dom";
 import {FiLoader} from "react-icons/fi"
 import Book from "./Book";
 import ErrorPage from "./ErrorPage";
+import FillOutPreferences from "./FillOutPreferences";
 
 const Homepage = () => {
 const navigate = useNavigate()
 const [error, setError] = useState(false);
 const [sections, setSections] = useState({});
-const homepageSections = ["fiction", "fantasy", "horror", "historical fiction", "detective", "classics"]
+const homepageSections = ["fiction", "fantasy", "horror", "historical fiction", "detective", "classics"];
+const {user} = useAuth0();
+//"fiction", "fantasy", "horror", "historical fiction", "detective", "classics"
 
     useEffect(()=> {
       const sectionFetch = async () => {
@@ -32,8 +35,12 @@ const homepageSections = ["fiction", "fantasy", "horror", "historical fiction", 
 if (error) {
   return <ErrorPage />
 }
- return (
-    
+if (homepageSections.length === 0) {
+  return <FillOutPreferences />
+}
+
+return (
+
  
      !sections.fiction
      ? <Loading />
@@ -73,7 +80,7 @@ border: none;
 margin: -15px 0px 15px -30px;
 border-radius: 20px;
 padding-top: 40px;
-box-shadow: #408E91 0px 2px 4px 0px, #408E91 0px 2px 16px 0px;
+box-shadow: black 0px 2px 4px 0px, black 0px 2px 16px 0px;
 `
 const Section = styled.div`
 width: 80vw;

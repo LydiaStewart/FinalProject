@@ -9,9 +9,11 @@ const LoginButton = () => {
 }
 
 const Button = styled.button`
-font-size: 15px;
+font-size: 18px;
 width: 80px;
-//font-weight: bold;
+font-weight: bold;
+border-radius: 50%;
+font-family: Oswald;
 
 &:hover {
     cursor: pointer;

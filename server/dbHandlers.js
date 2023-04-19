@@ -85,7 +85,8 @@ const createUser = async (req, res) => {
         toRead: [],
         following: [],
         followedBy: [],
-        inbox: []
+        inbox: [],
+        homeSections: []
     }
 try {
     await client.connect();
@@ -347,6 +348,29 @@ finally {
 }
 }
 
+const setGenrePreferences = async (req, res) => {
+    const client = new MongoClient(MONGO_URI,options)
+    const {userId} = req.params;
+    const query = {_id: userId}
+    const newValues = {$push: {homeSections: req.body}}
+    console.log(req.body)
+    try {
+        await client.connect()
+        const db = client.db('pageTurner')
+        await db.collection('users').findOne(query)
+        await db.collection('users').updateOne(query, newValues)
+        return res.status(200).json({status: 200, data : req.body})
+    
+    }
+    catch (err) {
+        console.log(err.stack)
+        return res.status(400).json({status: 400, message: err.message, data: req.body})
+    }
+    finally {
+        client.close()
+    }
+}
 
 module.exports = {getUsers, createUser, getUser, addReadBook, addBookToReadList, addBookToFavorites, getUserFromSearch, 
-    addFollower, removeBookFromFavorites, removeBookFromReadList, removeReadBook, sendMessage, removeFollower, deleteUser}
+    addFollower, removeBookFromFavorites, removeBookFromReadList, removeReadBook, sendMessage, removeFollower, deleteUser,
+setGenrePreferences}

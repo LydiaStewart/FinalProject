@@ -37,7 +37,7 @@ return ( !userNow
 <Words>What's next for you? ({userNow.toRead.length})</Words>
 <NextDiv>
 { userNow.toRead.length === 0
-  ? <p>Add some books to your to-read list!</p>
+  ? <p onClick={() => navigate("/")}>Add some books to your to-read list!</p>
    : userNow.toRead.slice(Math.max(userNow.toRead.length - 5, 0)).map((toReadBook) => {
         return <BookDiv key={toReadBook.id}>
         <Title onClick={(event) => {
@@ -66,7 +66,7 @@ return ( !userNow
 <NextDiv>
 { 
     userNow.favoriteBooks.length === 0
-    ? <p>Add some of your favorites!</p>
+    ? <p onClick={() => navigate("/")}>Add some of your favorites!</p>
    
    : userNow.favoriteBooks.slice(Math.max(userNow.favoriteBooks.length - 5, 0)).map((readBook) => {
         return <BookDiv key={readBook.id}>
@@ -94,7 +94,7 @@ return ( !userNow
 <Words>What you've read ({userNow.readBooks.length})</Words>
 <NextDiv>
 {   userNow.readBooks.length === 0
-   ? <p>Add some books you've read!</p>
+   ? <p onClick={() => navigate("/")}>Add some books you've read!</p>
    : userNow.readBooks.slice(Math.max(userNow.readBooks.length - 5, 0)).map((readBook) => {
         return <BookDiv key={readBook.id}>
         <Title onClick={(event) => {

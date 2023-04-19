@@ -8,7 +8,8 @@ export default createGlobalStyle`
 }
 html, body {
         margin: 0;
-        background-color: #D8D8D8
+        //background-image: url("https://static01.nyt.com/images/2019/12/17/books/review/17fatbooks/17fatbooks-superJumbo.jpg") 
+        background-color: #D8D8D8;
         // #456c6f
         
     }
@@ -19,6 +20,7 @@ html, body {
     }
     body {
         line-height: 1;
+        font-family: Raleway;
     }
     ol, ul {
         list-style: none;

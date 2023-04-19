@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const PORT = 4000;
 const {getSection, getBook, freeEbookSearch, getBookDetails, getAuthor, getCategory} = require("./apiHandlers")
 const {getUsers, createUser, getUser, addBookToReadList, addReadBook, addBookToFavorites, getUserFromSearch, 
-  addFollower, removeBookFromFavorites, removeBookFromReadList, removeReadBook, sendMessage, removeFollower, deleteUser} = require("./dbHandlers")
+  addFollower, removeBookFromFavorites, removeBookFromReadList, removeReadBook, sendMessage, removeFollower, deleteUser, setGenrePreferences} = require("./dbHandlers")
 
 express()
   .use(function(req, res, next) {
@@ -41,6 +41,7 @@ express()
   .patch("/api/removefollower/:userId", removeFollower)
   .post("/api/message/:userId/:friendId", sendMessage)
   .delete("/api/deleteuser/:userId", deleteUser)
+  .post("/api/sethomesections/:userId", setGenrePreferences)
 
   // API endpoints
   .get(`/api/section/:section`, getSection)

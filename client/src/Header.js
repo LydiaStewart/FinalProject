@@ -38,7 +38,8 @@ const Header = () => {
                 toRead: [],
                 following: [],
                 followedBy: [],
-                inbox: []
+                inbox: [],
+                homeSections: []
                   }),
             })
             .then((res) => res.json())
@@ -262,10 +263,11 @@ const Header = () => {
     </>
 }
 const Select = styled.select`
-
+font-family: Raleway;
+border-radius: 10px;
 `
 const Option = styled.option`
-
+font-family: Raleway;
 `
 const TitleDiv = styled.div`
 margin-left: 5px;
@@ -315,7 +317,7 @@ margin-bottom: 20px;
 const Banner = styled.img`
 z-index: 0;
 height: 240px;
-object-fit: cover;
+object-fit: none;
 width: 100%;
 position: absolute;
 opacity: .6;
@@ -390,6 +392,8 @@ const Search = styled.input`
 height: 15px;
 width: 310px;
 margin-top: 10px;
+font-family: Raleway;
+border-radius: 10px;
 `
 const InButton = styled(LoginButton)`
 border: none;
@@ -405,6 +409,7 @@ background-color: white;
 `
 const Avatar = styled.img`
 height: 80px;
+border-radius: 50%;
 
 :hover& {
     opacity: .7;
@@ -415,7 +420,8 @@ const Wrapper = styled.div`
 height: 80px;
 display: flex;
 justify-content: space-between;
-background-color: #408E91;
+background-color: black;
+//#408E91;
 `
 const Div = styled.div`
 display: flex;
@@ -423,6 +429,7 @@ display: flex;
 const AppIcon = styled.img`
 height:100%;
 cursor: pointer;
+border-radius: 50%;
 `
 
 
